@@ -37,6 +37,41 @@ and its inverse
 
 When combined, they allow us to go from <a href="http://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="http://latex.codecogs.com/gif.latex?X" title="X" /></a> to a standard Gaussian, a much more convenient variable, and back, no matter how <a href="http://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="http://latex.codecogs.com/gif.latex?X" title="X" /></a> is distributed.
 
+# Class Methods and Example
+There are 5 methods in this class, all of which work exactly like the ones in `sklearn.preprocessing`.
+Know that it is assumed your data is organized in a Numpy array with shape (*m,n*), where *m* is the sample size and *n* is the number of feautures.
+
+- `fit` : Fits the transformer to the given variable data.
+- `transform` : Transforms the given data into a observations of a standard Gaussian variable.
+- `fit_transform` : Performs `fit` and `transform` in a single line for ease of use.
+- `inverse_transform` : Transforms the standard Gaussian variable into the original variable.
+- `_reset`  : Reset the transformer parameters.
+
+### Example
+Here a Numpy array of random integer values distributed across different ranges is transformed so that every column consists of data from a standard Gaussian.
+```
+import numpy as np 
+import Normalizer
+
+a = np.empty((100, 5))
+for i in range(5):
+    a[:,i] = np.random.randint(0, 10*(i+1), size=100)
+   
+scaler = Normalizer() # initialize the class.
+scaler.fit(a) # fit it to the data.
+t = scaler.transform(a) # transform the data into a standard Gaussian.
+t_inv = scaler.inverse_transform(t) # transform the standard Gaussian back into the orginal data.
+
+# Print mean absolute error between the orginial and doubly transformed data
+print np.abs(np.mean(t_inv.flatten() - a.flatten()))
+# My result was 0.924379265557.
+# Keep in mind that the values possess different ranges.
+```
+
+## Things to know
+- While `fit` and `transform` are reasonably fast, maybe as fast as the methods present in the `sklearn.preprocessing` module, `inverse_transform` is not. It relies in `brentq` from `scipy.optimize` to numerically compute <a href="http://www.codecogs.com/eqnedit.php?latex=\text{eCDF}^{-1}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?\text{eCDF}^{-1}" title="\text{eCDF}^{-1}" /></a> for every array element, thereby making it rather slow.
+- There is already a class in `sklearn.preprocessing` named Normalizer, so I'd recommend changing its name if necessary.
+
 ## Contributing
 Please feel free to contribute however you'd like.
 I taught myself everything I know about computer science and large part of my statistics knowledge, so criticism on how to improve my notation and explanation would be greatly appreciated!
