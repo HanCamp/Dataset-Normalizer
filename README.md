@@ -37,6 +37,9 @@ and its inverse
 
 When combined, they allow us to go from <a href="http://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="http://latex.codecogs.com/gif.latex?X" title="X" /></a> to a standard Gaussian, a much more convenient variable, and back, no matter how <a href="http://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="http://latex.codecogs.com/gif.latex?X" title="X" /></a> is distributed.
 
+## Authors
+- Haniel Campos
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/HanCamp/Dataset-Normalizer/blob/master/LICENSE) file for details
 
