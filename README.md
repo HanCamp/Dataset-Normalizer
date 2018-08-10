@@ -37,6 +37,10 @@ and its inverse
 
 When combined, they allow us to go from <a href="http://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="http://latex.codecogs.com/gif.latex?X" title="X" /></a> to a standard Gaussian, a much more convenient variable, and back, no matter how <a href="http://www.codecogs.com/eqnedit.php?latex=X" target="_blank"><img src="http://latex.codecogs.com/gif.latex?X" title="X" /></a> is distributed.
 
+## Contributing
+Please feel free to contribute however you'd like.
+I taught myself everything I know about computer science and large part of my statistics knowledge, so criticism on how to improve my notation and explanation would be greatly appreciated!
+
 ## Authors
 - Haniel Campos
 
